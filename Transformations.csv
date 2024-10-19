@@ -1,0 +1,8 @@
+transformation_id,transformation_name,connection
+1,Insert / Update - fact_environmental_corrections,fender_prod
+2,Insert / Update - fact_environmental_fuel_corrections,fender_prod
+3,Delete - fact_environmental_fuel_corrections,fender_prod
+4,Insert / Update - fact_environmental_corrections,fender_prod
+5,Insert / Update - fact_environmental_fuel_corrections,fender_prod
+6,Delete - fact_environmental_fuel_corrections,fender_prod
+7,Insert / Update - fact_environmental_totals,fender_prod

@@ -1,0 +1,10 @@
+table_id,table_name
+1,AGLDIMENSION
+2,work_fender_access_token
+3,fact_environmental_corrections
+4,fact_environmental_fuel_corrections
+5,dim_vessel
+6,fact_environmental_totals_pre
+7,fuel_types
+8,dim_vessel_nox_metan_factor
+9,fact_environmental_totals

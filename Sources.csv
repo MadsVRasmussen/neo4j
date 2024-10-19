@@ -1,0 +1,18 @@
+source_id,source_name,connection
+1,agresso.AGLDIMENSION,agresso_m7_read
+2,access_token,fender_prod
+3,fact_environmental_corrections,fender_prod
+4,vessel_id,datamarts
+5,access_token,fender_prod
+6,fact_environmental_corrections,fender_prod
+7,vessel_id,datamarts
+8,access_token,fender_prod
+9,fact_environmental_corrections (fuel),fender_prod
+10,fact_environmental_corrections (trips),fender_prod
+11,fact_environmental_totals_pre,fender_prod
+12,fact_environmental_totals_pre 2,fender_prod
+13,fuel_types,fender_prod
+14,nox_metan_factor,datamarts
+15,trigger 2,fender_prod
+16,Database lookup 2,fender_prod
+17,fuel_type_id 2,fender_prod
