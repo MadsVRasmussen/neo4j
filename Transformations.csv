@@ -1,8 +1,87 @@
-transformation_id,transformation_name,connection
-1,Insert / Update - fact_environmental_corrections,fender_prod
-2,Insert / Update - fact_environmental_fuel_corrections,fender_prod
-3,Delete - fact_environmental_fuel_corrections,fender_prod
-4,Insert / Update - fact_environmental_corrections,fender_prod
-5,Insert / Update - fact_environmental_fuel_corrections,fender_prod
-6,Delete - fact_environmental_fuel_corrections,fender_prod
-7,Insert / Update - fact_environmental_totals,fender_prod
+transformation_id,transformation_name,step_name,connection
+1,delete_deviations,Delete,fender_test
+2,delete_deviations,Delete,fender_dev
+3,delete_deviations,Delete,fender_prod
+4,delete_environmental_totals,Delete - fact_environmental_totals,fender_prod
+5,delete_environmental_totals,Delete - fact_environmental_totals,fender_test
+6,delete_environmental_totals,Delete - fact_environmental_totals,fender_dev
+7,delete_gpstrips,Delete,fender_test
+8,delete_gpstrips,Delete,fender_dev
+9,delete_gpstrips,Delete,fender_prod
+10,delete_history_work_fdb_trafikkdata,Delete,work
+11,delete_rutesett,Delete,fender_prod
+12,delete_rutesett,Delete,fender_test
+13,delete_rutesett,Delete,fender_dev
+14,fact_environmental_totals_pre,Insert / Update - fact_environmental_totals_pre,fender_prod
+15,fact_environmental_totals_pre,Delete - fact_environmental_totals_pre,fender_prod
+16,fact_environmental_totals_pre,Insert / Update - fact_environmental_totals_pre,fender_test
+17,fact_environmental_totals_pre,Delete - fact_environmental_totals_pre,fender_test
+18,fact_environmental_totals_pre,Insert / Update - fact_environmental_totals_pre,fender_dev
+19,fact_environmental_totals_pre,Delete - fact_environmental_totals_pre,fender_dev
+20,fact_trafikkmeldinger,Insert / Update - fact_trafikkmeldinger,datamarts
+21,get_all_environmental_corrections,Insert / Update - fact_environmental_corrections,fender_prod
+22,get_all_environmental_corrections,Insert / Update - fact_environmental_corrections 2,fender_prod
+23,get_all_environmental_corrections,Insert / Update - fact_environmental_fuel_corrections,fender_prod
+24,get_all_environmental_corrections,Delete - fact_environmental_fuel_corrections,fender_prod
+25,get_all_environmental_corrections,Insert / Update - fact_environmental_corrections,fender_test
+26,get_all_environmental_corrections,Insert / Update - fact_environmental_corrections 2,fender_test
+27,get_all_environmental_corrections,Insert / Update - fact_environmental_fuel_corrections,fender_test
+28,get_all_environmental_corrections,Delete - fact_environmental_fuel_corrections,fender_test
+29,get_all_environmental_corrections,Insert / Update - fact_environmental_corrections,fender_dev
+30,get_all_environmental_corrections,Insert / Update - fact_environmental_corrections 2,fender_dev
+31,get_all_environmental_corrections,Insert / Update - fact_environmental_fuel_corrections,fender_dev
+32,get_all_environmental_corrections,Delete - fact_environmental_fuel_corrections,fender_dev
+33,get_deviation_hashes,Insert / Update - work_fender_deviations,fender_test
+34,get_deviation_hashes,Delete,fender_test
+35,get_deviation_hashes,Insert / Update - work_fender_deviations_dev,fender_dev
+36,get_deviation_hashes,Delete,fender_dev
+37,get_deviation_hashes,Insert / Update - work_fender_deviations,fender_prod
+38,get_deviation_hashes,Delete,fender_prod
+39,get_environmental_corrections,Insert / Update - fact_environmental_corrections,fender_prod
+40,get_environmental_corrections,Insert / Update - fact_environmental_fuel_corrections,fender_prod
+41,get_environmental_corrections,Delete - fact_environmental_fuel_corrections,fender_prod
+42,get_environmental_corrections,Insert / Update - fact_environmental_corrections,fender_test
+43,get_environmental_corrections,Insert / Update - fact_environmental_fuel_corrections,fender_test
+44,get_environmental_corrections,Delete - fact_environmental_fuel_corrections,fender_test
+45,get_environmental_corrections,Insert / Update - fact_environmental_corrections,fender_dev
+46,get_environmental_corrections,Insert / Update - fact_environmental_fuel_corrections,fender_dev
+47,get_environmental_corrections,Delete - fact_environmental_fuel_corrections,fender_dev
+48,get_environmental_totals,Insert / Update - fact_environmental_totals,fender_prod
+49,get_environmental_totals,Delete - fact_environmental_totals,fender_prod
+50,get_environmental_totals,Insert / Update - fact_environmental_totals,fender_test
+51,get_environmental_totals,Delete - fact_environmental_totals,fender_test
+52,get_environmental_totals,Insert / Update - fact_environmental_totals,fender_dev
+53,get_environmental_totals,Delete - fact_environmental_totals,fender_dev
+54,get_gpstrips_hashes,Insert / Update - work_fender_gpstrips_hashes,fender_test
+55,get_gpstrips_hashes,Delete,fender_test
+56,get_gpstrips_hashes,Insert / Update - work_fender_gpstrips_hashes,fender_dev
+57,get_gpstrips_hashes,Delete,fender_dev
+58,get_gpstrips_hashes,Insert / Update - work_fender_gpstrips_hashes,fender_prod
+59,get_gpstrips_hashes,Delete,fender_prod
+60,get_rutesett_hashes,Insert / Update - work_fender_scheduledtrips_hashes,fender_test
+61,get_rutesett_hashes,Delete,fender_test
+62,get_rutesett_hashes,Insert / Update - work_fender_scheduledtrips_hashes 2,fender_prod
+63,get_rutesett_hashes,Delete,fender_prod
+64,get_rutesett_hashes,Insert / Update - work_fender_scheduledtrips_hashes,fender_dev
+65,get_rutesett_hashes,Delete,fender_dev
+66,get_trafikkmeldinger_hashes,Insert / Update - work_fender_trafficmessage_hashes,fender_test
+67,get_trafikkmeldinger_hashes,Delete,fender_test
+68,get_trafikkmeldinger_hashes,Insert / Update - work_fender_trafficmessage_hashes,fender_prod
+69,get_trafikkmeldinger_hashes,Delete,fender_prod
+70,get_trafikkmeldinger_hashes,Insert / Update - work_fender_trafficmessage_hashes_dev,fender_dev
+71,get_trafikkmeldinger_hashes,Delete,fender_dev
+72,send_environmental_totals,Insert / Update - fact_environmental_totals,fender_prod
+73,send_environmental_totals,Insert / Update - fact_environmental_totals,fender_test
+74,send_environmental_totals,Insert / Update - fact_environmental_totals,fender_dev
+75,send_gps_trips,Insert / Update - work_fender_gpstrips_hashes_dev,fender_test
+76,send_gps_trips,Insert / Update - work_fender_gpstrips_hashes_dev,fender_dev
+77,send_gps_trips,Insert / Update - work_fender_gpstrips_hashes_dev,fender_prod
+78,send_rutesett,Insert / Update - work_fender_deviations_hashes_dev,fender_test
+79,send_rutesett,Insert / Update - work_fender_scheduledtrips_hashes,fender_test
+80,send_rutesett,Insert / Update - work_fender_deviations_hashes_dev,fender_prod
+81,send_rutesett,Insert / Update - work_fender_scheduledtrips_hashes,fender_prod
+82,send_rutesett,Insert / Update - work_fender_scheduledtrips_hashes,fender_dev
+83,send_rutesett,Insert / Update -work_fender_deviations,fender_dev
+84,work_fdb_trafikkdata,work_fdb_trafikkdata (insert/update),work
+85,work_mellomsystemet_ag_export_base,Insert / Update,
+86,work_trafikkmeldinger,Insert / Update,work

@@ -1,18 +1,417 @@
-source_id,source_name,connection
-1,agresso.AGLDIMENSION,agresso_m7_read
-2,access_token,fender_prod
-3,fact_environmental_corrections,fender_prod
-4,vessel_id,datamarts
-5,access_token,fender_prod
-6,fact_environmental_corrections,fender_prod
-7,vessel_id,datamarts
-8,access_token,fender_prod
-9,fact_environmental_corrections (fuel),fender_prod
-10,fact_environmental_corrections (trips),fender_prod
-11,fact_environmental_totals_pre,fender_prod
-12,fact_environmental_totals_pre 2,fender_prod
-13,fuel_types,fender_prod
-14,nox_metan_factor,datamarts
-15,trigger 2,fender_prod
-16,Database lookup 2,fender_prod
-17,fuel_type_id 2,fender_prod
+source_id,transformation_name,step_name,connection
+1,check_duplicate_posts,fact_employees,datamarts
+2,delete_deviations,access_token 2,fender_test
+3,delete_deviations,fact_shiplog_route_deviations,fender_test
+4,delete_deviations,work_fender_deviations,fender_test
+5,delete_deviations,access_token 2,fender_dev
+6,delete_deviations,fact_fender_deviations_dev,fender_dev
+7,delete_deviations,work_fender_scheduledtrips_hashes,fender_dev
+8,delete_deviations,access_token 2,fender_prod
+9,delete_deviations,fact_shiplog_route_deviations,fender_prod
+10,delete_deviations,work_fender_deviations,fender_prod
+11,delete_environmental_totals,access_token,fender_prod
+12,delete_environmental_totals,totals_actual,fender_prod
+13,delete_environmental_totals,totals_fender,fender_prod
+14,delete_environmental_totals,access_token,fender_test
+15,delete_environmental_totals,totals_actual,fender_test
+16,delete_environmental_totals,totals_fender,fender_test
+17,delete_environmental_totals,access_token,fender_dev
+18,delete_environmental_totals,totals_actual,fender_dev
+19,delete_environmental_totals,totals_fender,fender_dev
+20,delete_gpstrips,access_token 2,fender_test
+21,delete_gpstrips,fact_fender_gpstrips,fender_test
+22,delete_gpstrips,work_fender_gpstrips_hashes,fender_test
+23,delete_gpstrips,access_token 2,fender_dev
+24,delete_gpstrips,fact_fender_gpstrips,fender_dev
+25,delete_gpstrips,work_fender_gpstrips_hashes,fender_dev
+26,delete_gpstrips,access_token 2,fender_prod
+27,delete_gpstrips,fact_fender_gpstrips,fender_prod
+28,delete_gpstrips,work_fender_gpstrips_hashes,fender_prod
+29,delete_rutesett,access_token 2,fender_prod
+30,delete_rutesett,fact_fender_trips_dev,fender_prod
+31,delete_rutesett,work_fender_scheduledtrips_hashes,fender_prod
+32,delete_rutesett,access_token 2,fender_test
+33,delete_rutesett,fact_fender_trips_dev,fender_test
+34,delete_rutesett,work_fender_scheduledtrips_hashes,fender_test
+35,delete_rutesett,access_token 2,fender_dev
+36,delete_rutesett,fact_fender_trips_dev,fender_dev
+37,delete_rutesett,work_fender_scheduledtrips_hashes,fender_dev
+38,delete_trafikkmeldinger,access_token 2,fender_test
+39,delete_trafikkmeldinger,fact_trafikkmeldinger,datamarts
+40,delete_trafikkmeldinger,work_fender_trafficmessage_hashes_dev,fender_test
+41,delete_trafikkmeldinger,access_token 2,fender_prod
+42,delete_trafikkmeldinger,fact_trafikkmeldinger,datamarts
+43,delete_trafikkmeldinger,work_fender_trafficmessage_hashes,fender_prod
+44,delete_trafikkmeldinger,access_token,fender_dev
+45,delete_trafikkmeldinger,fact_trafikkmeldinger,datamarts
+46,delete_trafikkmeldinger,work_fender_trafficmessage_hashes,fender_dev
+47,dimension_relation_values,AGLDIMENSION,agresso_m7_read
+48,dimension_relation_values,AGLDIMVALUE,agresso_m7_read
+49,dimension_relation_values,AGLDIMVALUE (dim_1),agresso_m7_read
+50,dimension_relation_values,AGLRELATION,agresso_m7_read
+51,dimension_relation_values,AGLRELVALUE,agresso_m7_read
+52,dim_account_relations,dim_accounts,datamarts
+53,dim_account_relations,work_account_relations,datamarts
+54,dim_agldimension,agresso.AGLDIMENSION,agresso_m7_read
+55,dim_aglvalue,Egne/leide,agresso_m7_read
+56,dim_aglvalue,agresso.AGLDIMVALUE,agresso_m7_read
+57,dim_aglvalue,dim_4_relation,agresso_m7_read
+58,dim_aglvalue,imo,agresso_m7_read
+59,dim_aglvalue,tonnage,agresso_m7_read
+60,dim_budget_values,fact_f1statistikk_operational,datamarts
+61,dim_company,acrclient,agresso_m7_read
+62,dim_connections,agldimvalue (dim_4),agresso_m7_read
+63,dim_connections,aglrelvalue,agresso_m7_read
+64,dim_connections,agresso.AGLRELVALUE,agresso_m7_read
+65,dim_connections,agresso.AGLRELVALUE 2,agresso_m7_read
+66,dim_connections,dim_agldimvalue,datamarts
+67,dim_connections,dim_agldimvalue 2,datamarts
+68,dim_connections,dim_agldimvalue 2 2,datamarts
+69,dim_delay_addition,aglrelvalue+agldimvalue,agresso_m7_read
+70,dim_f1stat_key_hours,fact_f1statistikk_financial,datamarts
+71,dim_f1stat_key_hours,fact_f1statistikk_financial 2,datamarts
+72,dim_f1stat_key_hours,fact_f1statistikk_operational,datamarts
+73,dim_f1stat_key_hours,period_input,datamarts
+74,dim_f1stat_key_hours,period_input 2,datamarts
+75,dim_f1stat_key_hours,fact_accounting_period_status,datamarts
+76,dim_f1stat_key_hours,fact_accounting_period_status 2,datamarts
+77,dim_finance_accounts,agresso.AGLACCGRP,agresso_m7_read
+78,dim_finance_accounts,agresso.AGLACCOUNTS,agresso_m7_read
+79,dim_kwhfartoy,kwhfartoy,agresso_m7_read
+80,dim_maalepunkt,maalepunkt,agresso_m7_read
+81,dim_omf,aglrelvalue,agresso_m7_read
+82,dim_passengers,PASS_NEW,mellomsystemet
+83,dim_seemp,seempEL,agresso_m7_read
+84,dim_seemp,seempKWH,agresso_m7_read
+85,dim_seemp,vessels 2,datamarts
+86,dim_vessel,fact_shiplog_connections,datamarts
+87,dim_vessel,fact_total_consumption,datamarts
+88,dim_vessel,work_anbud_relations,datamarts
+89,dim_vessel,work_vessel_relations_full,work
+90,dim_vessel_inspector,agresso.bruker,agresso_m7_read
+91,dim_vessel_inspector,dim_agldimvalue 3,datamarts
+92,dim_vessel_metan_factors,aglrelvalue/agldimvalue (metan factor),agresso_m7_read
+93,dim_vessel_nox_factor,FNOX,agresso_m7_read
+94,dim_vessel_nox_factor,FNOXL 2,agresso_m7_read
+95,dim_vessel_nox_factor,PMET 2,agresso_m7_read
+96,dim_vessel_nox_factor,aglrelvalue/agldimvalue (LNG nox factor),agresso_m7_read
+97,dim_vessel_nox_factor,aglrelvalue/agldimvalue (MGO/BIO nox factor),agresso_m7_read
+98,f1_saldo_3_mnd,input,mellomsystemet
+99,fact_absence,work_absence,work
+100,fact_absence,work_schedule,work
+101,fact_accounting_period_status,accounting_period_status,agresso_m7_read
+102,fact_employees,work_ahsrelvalue,work
+103,fact_employees,work_ahsresources,work
+104,fact_employees,work_aprposrelvalue (ansattform),work
+105,fact_employees,work_aprresourcepost,work
+106,fact_employees,work_employees,work
+107,fact_employees,ansettelsestype,datamarts
+108,fact_employees,dim_godkjenner_koststed,datamarts
+109,fact_employees,lookup post description,work
+110,fact_employees,work_vessel_rel,work
+111,fact_employee_absence_category,work_absence,work
+112,fact_employee_absence_category,Lookup main post,work
+113,fact_employee_turnover,MNMV (AMSLUTTÅRSAK),agresso_m7_read
+114,fact_employee_turnover,fact_employees,datamarts
+115,fact_employee_turnover,agldimvalue,agresso_m7_read
+116,fact_environmental_totals_pre,dim_vessel,datamarts
+117,fact_environmental_totals_pre,fact_environmental_totals_pre,fender_prod
+118,fact_environmental_totals_pre,fact_f1stat_operational_distributed,datamarts
+119,fact_environmental_totals_pre,Database lookup,datamarts
+120,fact_environmental_totals_pre,Database lookup 2,fender_prod
+121,fact_environmental_totals_pre,fuel_type_id,fender_prod
+122,fact_environmental_totals_pre,dim_vessel,datamarts
+123,fact_environmental_totals_pre,fact_environmental_totals_pre,fender_test
+124,fact_environmental_totals_pre,fact_f1stat_operational_distributed,datamarts
+125,fact_environmental_totals_pre,Database lookup,datamarts
+126,fact_environmental_totals_pre,Database lookup 2,fender_test
+127,fact_environmental_totals_pre,fuel_type_id,fender_test
+128,fact_environmental_totals_pre,dim_vessel,datamarts
+129,fact_environmental_totals_pre,fact_environmental_totals_pre,fender_dev
+130,fact_environmental_totals_pre,fact_f1stat_operational_distributed,datamarts
+131,fact_environmental_totals_pre,Database lookup,datamarts
+132,fact_environmental_totals_pre,Database lookup 2,fender_dev
+133,fact_environmental_totals_pre,fuel_type_id,fender_dev
+134,fact_f1statistikk,AGRESSO.F1STATISTIKK,agresso_m7_read
+135,fact_f1statistikk_financial,AGRESSO.F1STATISTIKK,agresso_m7_read
+136,fact_f1statistikk_operational,AGRESSO.F1STATISTIKK,agresso_m7_read
+137,fact_f1stat_distributed,dim_f1stat_financial_key_hours,datamarts
+138,fact_f1stat_distributed,fact_f1statistikk,datamarts
+139,fact_f1stat_financial_distributed,dim_f1stat_financial_key_hours (B),datamarts
+140,fact_f1stat_financial_distributed,dim_f1stat_financial_key_hours (R),datamarts
+141,fact_f1stat_financial_distributed,fact_f1statistikk_financial,datamarts
+142,fact_f1stat_financial_distributed,fact_f1statistikk_financial 2,datamarts
+143,fact_f1stat_financial_distributed,fact_f1statistikk_financial 2 2,agresso_m7_read
+144,fact_f1stat_operational_distributed,dim_f1stat_operational_key_hours,datamarts
+145,fact_f1stat_operational_distributed,fact_f1statistikk_operational,datamarts
+146,fact_fdb,work_fdb_trafikkdata,work
+147,fact_fdb,work_connections_rel,work
+148,fact_fdb,work_connections_rel 2,work
+149,fact_fdb_samband,work_connections_rel,work
+150,fact_fdb_samband,work_fdb_samband,work
+151,fact_fender_environmental_corrections,fact_environmental_corrections,fender_prod
+152,fact_fender_environmental_corrections,fact_environmental_fuel_corrections,fender_prod
+153,fact_fender_environmental_corrections,Database lookup,datamarts
+154,fact_fender_environmental_corrections,fuel_types,fender_prod
+155,fact_fender_gpstrips,fact_shiplog_gps_trips,datamarts
+156,fact_fender_gpstrips,fact_shiplog_gps_trips,datamarts
+157,fact_fender_gpstrips,fact_shiplog_gps_trips,datamarts
+158,fact_fender_trips,fact_shiplog_route_deviations,datamarts
+159,fact_fender_trips,fact_trips 2,datamarts
+160,fact_fender_trips,fact_trips_schedule 2 2,datamarts
+161,fact_fender_trips,fact_shiplog_route_deviations,datamarts
+162,fact_fender_trips,fact_trips,datamarts
+163,fact_fender_trips,fact_trips_schedule 2,datamarts
+164,fact_fender_trips,fact_shiplog_route_deviations,datamarts
+165,fact_fender_trips,fact_trips 2,datamarts
+166,fact_fender_trips,fact_trips_schedule 2 2,datamarts
+167,fact_miljoverdier_f1stat_financial,anlop bud,datamarts
+168,fact_miljoverdier_f1stat_financial,f1stat_key_B,datamarts
+169,fact_miljoverdier_f1stat_financial,f1stat_key_R,datamarts
+170,fact_miljoverdier_f1stat_financial,f1stat_rådata fuel,datamarts
+171,fact_miljoverdier_f1stat_financial,factors,datamarts
+172,fact_miljoverdier_f1stat_operational,anlop bud,datamarts
+173,fact_miljoverdier_f1stat_operational,f1stat_key_B,datamarts
+174,fact_miljoverdier_f1stat_operational,f1stat_key_R,datamarts
+175,fact_miljoverdier_f1stat_operational,f1stat_rådata fuel_financial,datamarts
+176,fact_miljoverdier_f1stat_operational,f1stat_rådata fuel_operational,datamarts
+177,fact_miljoverdier_f1stat_operational,factors,datamarts
+178,fact_samtaler,fact_employees,datamarts
+179,fact_schedule,aprhistr (earned hours),work
+180,fact_schedule,aprhistr (overtime hours),work
+181,fact_schedule,fact_employee_absence_category,datamarts
+182,fact_schedule,fact_employee_absence_category 2,datamarts
+183,fact_schedule,schedule,work
+184,fact_schedule,work_ahsrelvalue,work
+185,fact_schedule,Lookup absence,work
+186,fact_schedule,ansattform,work
+187,fact_schedule,ansettelsestype,datamarts
+188,fact_schedule,dim_godkjenner_koststed,datamarts
+189,fact_schedule,lookup post description,work
+190,fact_schedule,lookup resource name,work
+191,fact_schedule,work_vessel_rel,work
+192,fact_shiplog_route_deviations,dim_connections,datamarts
+193,fact_shiplog_route_deviations,dim_connections 2 2,datamarts
+194,fact_shiplog_route_deviations,dim_connections 2 2 2,datamarts
+195,fact_shiplog_route_deviations,dim_connections 2 2 2 2,datamarts
+196,fact_shiplog_route_deviations,dim_connections 2 2 2 2 2,datamarts
+197,fact_shiplog_route_deviations,fact_shiplog_cancelled_trips,datamarts
+198,fact_shiplog_route_deviations,fact_shiplog_trips,datamarts
+199,fact_shiplog_route_deviations,fact_shiplog_trips 2,datamarts
+200,fact_shiplog_route_deviations,fact_shiplog_trips 2 2,datamarts
+201,fact_shiplog_route_deviations,fact_shiplog_trips 2 2 2,datamarts
+202,fact_shiplog_route_deviations,work_fender_deviations (dev),fender_dev
+203,fact_shiplog_route_deviations,work_fender_deviations (prod),fender_prod
+204,fact_shiplog_route_deviations,work_fender_deviations (test),fender_test
+205,fact_tickets,hist_mellomsystemet_tickets,history
+206,fact_tickets,work_mellomsystemet_tickets,work
+207,fact_trafikkmeldinger,dim_connections,datamarts
+208,fact_trafikkmeldinger,work_trafikkmeldinger,work
+209,fact_trafikkmeldinger,Database lookup,datamarts
+210,get_all_environmental_corrections,access_token,fender_prod
+211,get_all_environmental_corrections,fact_environmental_corrections,fender_prod
+212,get_all_environmental_corrections,fact_environmental_corrections 2,fender_prod
+213,get_all_environmental_corrections,vessel_id,datamarts
+214,get_all_environmental_corrections,access_token,fender_test
+215,get_all_environmental_corrections,fact_environmental_corrections,fender_test
+216,get_all_environmental_corrections,fact_environmental_corrections 2,fender_test
+217,get_all_environmental_corrections,vessel_id,datamarts
+218,get_all_environmental_corrections,access_token,fender_dev
+219,get_all_environmental_corrections,fact_environmental_corrections,fender_dev
+220,get_all_environmental_corrections,fact_environmental_corrections 2,fender_dev
+221,get_all_environmental_corrections,vessel_id,datamarts
+222,get_deviation_hashes,Table input,fender_test
+223,get_deviation_hashes,access_token 2,fender_test
+224,get_deviation_hashes,Database lookup 2,fender_test
+225,get_deviation_hashes,Table input,fender_dev
+226,get_deviation_hashes,access_token 2,fender_dev
+227,get_deviation_hashes,Database lookup,fender_dev
+228,get_deviation_hashes,Table input,fender_prod
+229,get_deviation_hashes,access_token 2,fender_prod
+230,get_deviation_hashes,Database lookup 2,fender_prod
+231,get_environmental_corrections,access_token,fender_prod
+232,get_environmental_corrections,fact_environmental_corrections,fender_prod
+233,get_environmental_corrections,vessel_id,datamarts
+234,get_environmental_corrections,access_token,fender_test
+235,get_environmental_corrections,fact_environmental_corrections,fender_test
+236,get_environmental_corrections,vessel_id,datamarts
+237,get_environmental_corrections,access_token,fender_dev
+238,get_environmental_corrections,fact_environmental_corrections,fender_dev
+239,get_environmental_corrections,vessel_id,datamarts
+240,get_environmental_totals,access_token,fender_prod
+241,get_environmental_totals,fact_environmental_totals,fender_prod
+242,get_environmental_totals,access_token,fender_test
+243,get_environmental_totals,fact_environmental_totals,fender_test
+244,get_environmental_totals,access_token,fender_dev
+245,get_environmental_totals,fact_environmental_totals,fender_dev
+246,get_gpstrips_hashes,access_token 2,fender_test
+247,get_gpstrips_hashes,access_token 2,fender_dev
+248,get_gpstrips_hashes,access_token 2,fender_prod
+249,get_rutesett_hashes,access_token 2,fender_test
+250,get_rutesett_hashes,Table input,fender_prod
+251,get_rutesett_hashes,access_token 2 2,fender_prod
+252,get_rutesett_hashes,Database lookup 2,fender_prod
+253,get_rutesett_hashes,access_token 2,fender_dev
+254,get_trafikkmeldinger_hashes,access_token 2,fender_test
+255,get_trafikkmeldinger_hashes,access_token 2,fender_prod
+256,get_trafikkmeldinger_hashes,access_token 2,fender_dev
+257,hist_mellomsystemet_tickets,mellomsystemet,mellomsystemet
+258,hist_mellomsystemet_tickets,dim_agldimvalue4 2,datamarts
+259,hist_mellomsystemet_tickets,dim_anbud 2,datamarts
+260,send_connections,access_token,fender_test
+261,send_connections,dim_connections,datamarts
+262,send_connections,access_token,fender_prod
+263,send_connections,dim_connections,datamarts
+264,send_connections,access_token,fender_dev
+265,send_connections,dim_connections,datamarts
+266,send_environmental_autogenerated_corrections,access_token,fender_prod
+267,send_environmental_autogenerated_corrections,corrections,fender_prod
+268,send_environmental_autogenerated_corrections,fact_environmental_totals_pre,fender_prod
+269,send_environmental_autogenerated_corrections,access_token,fender_test
+270,send_environmental_autogenerated_corrections,corrections,fender_test
+271,send_environmental_autogenerated_corrections,fact_environmental_totals_pre,fender_test
+272,send_environmental_autogenerated_corrections,access_token,fender_dev
+273,send_environmental_autogenerated_corrections,corrections,fender_dev
+274,send_environmental_autogenerated_corrections,fact_environmental_totals_pre,fender_dev
+275,send_environmental_totals,access_token,fender_prod
+276,send_environmental_totals,fact_environmental_corrections (fuel),fender_prod
+277,send_environmental_totals,fact_environmental_corrections (trips),fender_prod
+278,send_environmental_totals,fact_environmental_totals_pre,fender_prod
+279,send_environmental_totals,fact_environmental_totals_pre 2,fender_prod
+280,send_environmental_totals,fuel_types,fender_prod
+281,send_environmental_totals,nox_metan_factor,datamarts
+282,send_environmental_totals,trigger 2,fender_prod
+283,send_environmental_totals,Database lookup 2,fender_prod
+284,send_environmental_totals,fuel_type_id 2,fender_prod
+285,send_environmental_totals,access_token,fender_test
+286,send_environmental_totals,fact_environmental_corrections (fuel),fender_test
+287,send_environmental_totals,fact_environmental_corrections (trips),fender_test
+288,send_environmental_totals,fact_environmental_totals_pre,fender_test
+289,send_environmental_totals,fact_environmental_totals_pre 2,fender_test
+290,send_environmental_totals,fuel_types,fender_test
+291,send_environmental_totals,nox_metan_factor,datamarts
+292,send_environmental_totals,trigger 2,fender_test
+293,send_environmental_totals,Database lookup 2,fender_test
+294,send_environmental_totals,fuel_type_id 2,fender_test
+295,send_environmental_totals,access_token,fender_dev
+296,send_environmental_totals,fact_environmental_corrections (fuel),fender_dev
+297,send_environmental_totals,fact_environmental_corrections (trips),fender_dev
+298,send_environmental_totals,fact_environmental_totals_pre,fender_dev
+299,send_environmental_totals,fact_environmental_totals_pre 2,fender_dev
+300,send_environmental_totals,fuel_types,fender_dev
+301,send_environmental_totals,nox_metan_factor,datamarts
+302,send_environmental_totals,trigger 2,fender_dev
+303,send_environmental_totals,Database lookup 2,fender_dev
+304,send_environmental_totals,fuel_type_id 2,fender_dev
+305,send_external_reasons,access_token,fender_test
+306,send_external_reasons,fact_shiplog_route_deviations,datamarts
+307,send_external_reasons,access_token,fender_dev
+308,send_external_reasons,fact_shiplog_route_deviations,datamarts
+309,send_external_reasons,access_token,fender_prod
+310,send_external_reasons,fact_shiplog_route_deviations,datamarts
+311,send_fuel_types,access_token,fender_prod
+312,send_fuel_types,access_token,fender_test
+313,send_fuel_types,access_token,fender_dev
+314,send_gps_trips,access_token 2,fender_test
+315,send_gps_trips,fact_fender_gpstrips,fender_test
+316,send_gps_trips,Lookup hash,fender_test
+317,send_gps_trips,access_token 2,fender_dev
+318,send_gps_trips,fact_fender_gpstrips_dev,fender_dev
+319,send_gps_trips,Lookup hash,fender_dev
+320,send_gps_trips,access_token 2,fender_prod
+321,send_gps_trips,fact_fender_gpstrips,fender_prod
+322,send_gps_trips,Lookup hash,fender_prod
+323,send_rutesett,access_token 2,fender_test
+324,send_rutesett,access_token 2 2,fender_test
+325,send_rutesett,fact_fender_deviations,fender_test
+326,send_rutesett,fact_fender_trips,fender_test
+327,send_rutesett,Lookup hash,fender_test
+328,send_rutesett,Lookup hash 2,fender_test
+329,send_rutesett,access_token 2,fender_prod
+330,send_rutesett,access_token 2 2,fender_prod
+331,send_rutesett,fact_fender_deviations,fender_prod
+332,send_rutesett,fact_fender_trips,fender_prod
+333,send_rutesett,Lookup hash,fender_prod
+334,send_rutesett,Lookup hash 2,fender_prod
+335,send_rutesett,access_token 2,fender_dev
+336,send_rutesett,access_token 2 2,fender_dev
+337,send_rutesett,fact_fender_deviations,fender_dev
+338,send_rutesett,fact_fender_trips_dev,fender_dev
+339,send_rutesett,Lookup ,fender_dev
+340,send_rutesett,Lookup hash,fender_dev
+341,send_trafikkmeldinger,access_token,fender_test
+342,send_trafikkmeldinger,fact_trafikkmeldinger,datamarts
+343,send_trafikkmeldinger,Lookup hash,fender_test
+344,send_trafikkmeldinger,access_token,fender_prod
+345,send_trafikkmeldinger,fact_trafikkmeldinger,datamarts
+346,send_trafikkmeldinger,Lookup hash,fender_prod
+347,send_trafikkmeldinger,access_token,fender_dev
+348,send_trafikkmeldinger,fact_trafikkmeldinger,datamarts
+349,send_trafikkmeldinger,Lookup hash,fender_dev
+350,work_absence,apsabsence,work
+351,work_absence,Lookup dim_1,work
+352,work_absence,Lookup type & seq,work
+353,work_absence_old,apsabsence,work
+354,work_absence_old,work_schedule,work
+355,work_absence_old,Lookup dim_1,work
+356,work_absence_old,Lookup type & seq,work
+357,work_account_relations,agresso.AGLRELVALUE,agresso_m7_read
+358,work_account_relations,dim_agldimvalue,datamarts
+359,work_anbud_relations,agresso.AGLRELVALUE,agresso_m7_read
+360,work_anbud_relations,dim_agldimvalue,datamarts
+361,work_employee_main_post,work_ahsresources,work
+362,work_employee_main_post,work_aprresourcepost,work
+363,work_employee_main_post,work_aprresourcepost 2,work
+364,work_employee_main_post,Lookup ansattform,work
+365,work_fdb_profilkoder,work_fdb_token,work
+366,work_fdb_samband,work_connections_rel,work
+367,work_fdb_samband,work_fdb_token,work
+368,work_fdb_trafikkdata,work_fdb_samband,work
+369,work_fdb_trafikkdata,work_fdb_token,work
+370,work_fdb_trafikkdata,work_fdb_trafikkdata (max date),work
+371,work_kapitk_relations,agresso.AGLRELVALUE,agresso_m7_read
+372,work_kapitk_relations,dim_agldimvalue,datamarts
+373,work_mellomsystemet_ag_export_base,Table input,work
+374,work_mellomsystemet_ag_export_base,ag_export_base,mellomsystemet
+375,work_mellomsystemet_tickets,AG_EXPORT_BASE,mellomsystemet
+376,work_mellomsystemet_tickets,AG_EXPORT_BASE (cars & PBE),mellomsystemet
+377,work_mellomsystemet_tickets,AG_EXPORT_BASE (cars & PBE) 2,mellomsystemet
+378,work_mellomsystemet_tickets,detail,mellomsystemet
+379,work_mellomsystemet_tickets,detail (cars & PBE),mellomsystemet
+380,work_mellomsystemet_tickets,f1_saldo_1,mellomsystemet
+381,work_mellomsystemet_tickets,f1_saldo_3_mnd,mellomsystemet
+382,work_mellomsystemet_tickets,work_mellomsystemet_tickets_hist,work
+383,work_mellomsystemet_tickets,anbud,datamarts
+384,work_mellomsystemet_tickets,anbud 2,datamarts
+385,work_mellomsystemet_tickets,connection_name,datamarts
+386,work_mellomsystemet_tickets,connection_name 2,datamarts
+387,work_mellomsystemet_tickets_hist,work_mellomsystemet_tickets,work
+388,work_opled_relations,agresso.AGLRELVALUE,agresso_m7_read
+389,work_opled_relations,agresso.AGLRELVALUE 2,agresso_m7_read
+390,work_opled_relations,dim_agldimvalue,datamarts
+391,work_opled_relations,dim_agldimvalue 2,datamarts
+392,work_rappgrp_relations,agresso.AGLRELVALUE,agresso_m7_read
+393,work_rappgrp_relations,dim_agldimvalue,datamarts
+394,work_schedule,AHSRESSCHEDULE,work
+395,work_schedule,Lookup dim_1,work
+396,work_schedule,Lookup type & seq,work
+397,work_tables,AHSRESSCHEDULE,agresso_m7_read
+398,work_tables,APRHISTR,agresso_m7_read
+399,work_tables,APRPOSRELVALUE,agresso_m7_read
+400,work_tables,APRPOST,agresso_m7_read
+401,work_tables,APRRESOURCEPOST,agresso_m7_read
+402,work_tables,APSABSENCE,agresso_m7_read
+403,work_tables,ahsrelvalue,agresso_m7_read
+404,work_tables,ahsresources,agresso_m7_read
+405,work_tables,employees,agresso_m7_read
+406,work_tickets_new,AUTOPASS,mellomsystemet
+407,work_tickets_new,AUTOPASS_NEW,mellomsystemet
+408,work_tickets_new,mellomsystemet,mellomsystemet
+409,work_tickets_new,test,mellomsystemet
+410,work_tickets_new,test 2,mellomsystemet
+411,work_tickets_new,dim_agldimvalue4,datamarts
+412,work_tickets_new,dim_agldimvalue4 2,datamarts
+413,work_tickets_new,dim_anbud,datamarts
+414,work_tickets_new,dim_anbud 2,datamarts
+415,work_vessel_ownership,agresso.AGLRELVALUE,agresso_m7_read
+416,work_vessel_ownership,dim_agldimvalue,datamarts
